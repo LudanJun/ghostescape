@@ -153,3 +153,19 @@ void Game::drawGrid(const glm::vec2 &top_left, glm::vec2 bottom_right, float gri
 
     SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1); // 恢复渲染器的颜色
 }
+
+// 绘制游戏边界
+void Game::drawBoundary(const glm::vec2 &top_left, const glm::vec2 &bottom_right, float boundary_width, SDL_FColor fcolor)
+{
+    // TODO: 实现绘制游戏边界的代码
+    SDL_SetRenderDrawColorFloat(renderer_, fcolor.r, fcolor.g, fcolor.b, fcolor.a);
+    for (float i = 0; i < boundary_width; i++)
+    {
+        SDL_FRect rect = {top_left.x - i,
+                          top_left.y - i,
+                          bottom_right.x - top_left.x + 2 * i,
+                          bottom_right.y - top_left.y + 2 * i};
+        SDL_RenderRect(renderer_, &rect);
+    }
+    SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1);
+}
