@@ -9,9 +9,14 @@
 class Game
 {
     glm::vec2 screen_size_ = glm::vec2(0); // 屏幕大小
-    bool is_running_ = true;             // 游戏是否运行
-    SDL_Window *window_ = nullptr;         // 窗口
-    SDL_Renderer *renderer_ = nullptr;     // 渲染器
+    bool is_running_ = true;               // 游戏是否运行
+
+    Uint64 FPS_ = 60;       // 每秒帧数
+    Uint64 frame_delay_ = 0; // 每帧间隔时间 单位纳秒ns
+    float dt_ = 0.0f;        // 上一帧到当前帧的时间间隔
+
+    SDL_Window *window_ = nullptr;     // 窗口
+    SDL_Renderer *renderer_ = nullptr; // 渲染器
     // 私有构造函数
     Game() {}
     // 禁止拷贝构造函数与赋值运算符
