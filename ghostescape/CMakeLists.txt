@@ -49,8 +49,10 @@ find_package(glm REQUIRED)
 
 # 添加可执行文件
 add_executable(${TARGET} 
-                src/game.cpp
-                src/main.cpp)
+                src/core/game.cpp
+                src/main.cpp
+                src/scene_main.cpp
+                )
 # 链接库（包含手动配置的 SDL3_mixer）
 target_include_directories(${TARGET} PRIVATE ${SDL3_MIXER_INCLUDE_DIR})  # 添加头文件目录
 target_link_directories(${TARGET} PRIVATE ${SDL3_MIXER_LIB_DIR})        # 添加库目录
