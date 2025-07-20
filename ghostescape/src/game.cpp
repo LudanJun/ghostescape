@@ -25,7 +25,7 @@ void Game::init(std::string title, int width, int height)
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_Mixer初始化失败: %s\n", SDL_GetError());
     }
 
-    if (Mix_OpenAudio(0, NULL))
+    if (!Mix_OpenAudio(0, NULL))
     {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_Mixer打开音频失败: %s\n", SDL_GetError());
     }
