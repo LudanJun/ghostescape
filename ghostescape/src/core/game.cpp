@@ -125,3 +125,31 @@ void Game::clean()
     // 退出SDL
     SDL_Quit();
 }
+
+/// @brief  绘制网格
+/// @param top_left   网格左上角
+/// @param bottom_right  网格右下角
+/// @param grid_width   网格线宽度
+/// @param fcolor   网格线颜色
+void Game::drawGrid(const glm::vec2 &top_left, glm::vec2 bottom_right, float grid_width, SDL_FColor fcolor)
+{
+    // 设置渲染器的颜色
+    SDL_SetRenderDrawColorFloat(renderer_, fcolor.r, fcolor.g, fcolor.b, fcolor.a);
+    // 从左上角开始，绘制竖着的线
+    for (float x = top_left.x; x <= bottom_right.x; x += grid_width)
+    {
+        // param renderer  画一条线的渲染器.
+        // param x1是起点的x坐标。
+        // param y1是起点的y坐标。
+        // param x2是终点的x坐标。
+        // param y2是终点的y坐标。
+        SDL_RenderLine(renderer_, x, top_left.y, x, bottom_right.y); // 绘制竖着的线
+    }
+    // 从左上角开始，绘制横着的线
+    for (float y = top_left.y; y <= bottom_right.y; y += grid_width)
+    {
+        SDL_RenderLine(renderer_, top_left.x, y, bottom_right.x, y); // 绘制横着的线
+    }
+
+    SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1); // 恢复渲染器的颜色
+}

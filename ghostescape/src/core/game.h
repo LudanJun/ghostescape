@@ -40,6 +40,12 @@ public:
     void update(float dt);                               // 更新游戏状态
     void render();                                       // 渲染游戏画面
     void clean();                                        // 清理游戏资源
+
+    // getters and setters
+    glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
+
+    // 工具函数
+    void drawGrid(const glm::vec2 &top_left, glm::vec2 bottom_right, float grid_width, SDL_FColor fcolor); // 绘制网格
 };
 
 #endif // GAME_H
